@@ -17,9 +17,10 @@ async fn main() {
         .route("/units", post(handlers::unit_handler::create_unit))
         .route("/units/:id", put(handlers::unit_handler::update_unit))
         .route("/units/:id", delete(handlers::unit_handler::delete_unit))
+        .route("/categories", get(handlers::category_handler::get_all_category))
         .with_state(pool);
 
-    let addr: SocketAddr = "127.0.0.1:3000".parse().unwrap();
+    let addr: SocketAddr = "127.0.0.1:3001".parse().unwrap();
     let listener = TcpListener::bind(addr).await.unwrap();
 
     println!("🚀 Server running on http://{}", addr);
