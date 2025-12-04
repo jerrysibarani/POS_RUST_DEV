@@ -22,6 +22,11 @@ async fn main() {
         .route("/categories", post(handlers::category_handler::create_category))
         .route("/categories/:id", put(handlers::category_handler::update_category))
         .route("/categories/:id", delete(handlers::category_handler::delete_category))
+        .route("/locations", get(handlers::location_handler::get_all_locations))
+        .route("/locations/:id", get(handlers::location_handler::get_location_by_id))
+        .route("/locations", post(handlers::location_handler::create_location))
+        .route("/locations/:id", put(handlers::location_handler::update_location))
+        .route("/locations/:id", delete(handlers::location_handler::delete_location))
         .with_state(pool);
 
     let addr: SocketAddr = "127.0.0.1:3001".parse().unwrap();
